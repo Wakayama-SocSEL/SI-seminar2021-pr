@@ -4,10 +4,43 @@
 package com.example.seminar;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
-        assertNotNull("calculate関数が呼び出し可能", App.calculate(new int[]{0, 0, 0, 0, 0}));
+    private int sum(int[] args) {
+        int result = 0;
+        for (int i = 0; i < args.length; i++) {
+            result += args[i];
+        }
+        return result;
+    }
+
+    @Test
+    public void testSum() {
+        int[] data = new int[]{2, 4, 6, 8, 10, 12};
+        int[] calculated = App.calculate(data);
+        int expected = sum(data);
+        int actual = sum(calculated);
+        assertEquals("計算後の合計単位数が等しい", expected, actual);
+    }
+
+    @Test
+    public void testLimit() {
+        int[] data = new int[]{32, 26, 34, 18, 16, 10};
+        int[] calculated = App.calculate(data);
+        for (int i = 0; i < calculated.length - 1; i++) {
+            assertTrue("計算後の自由選択以外の単位数が卒業要件以下", calculated[i] <= App.SOTSUGYO_YOUKEN[i]);
+        }
+    }
+
+    @Test
+    public void testCalculate() {
+        int[] data = new int[]{30, 24, 34, 16, 12, 8};
+        // 第一メジャーが2単位多いので、その他メジャーに2単位回す
+        // 34 → 32, 12 → 14
+        int[] expected = new int[]{30, 24, 32, 16, 14, 8};
+        int[] actual = App.calculate(data);
+        assertArrayEquals("第一メジャーの余剰をその他メジャーに回す", expected, actual);
     }
 }

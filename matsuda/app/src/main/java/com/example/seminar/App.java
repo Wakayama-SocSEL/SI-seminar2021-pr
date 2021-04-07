@@ -4,12 +4,24 @@
 package com.example.seminar;
 
 public class App {
-    public static int[] calculate(int[] seiseki) {
-        int kyouyou = seiseki[0];
-        int daiichiMajor = seiseki[1];
-        int dainiMajor = seiseki[2];
-        int sonotaMajor = seiseki[3];
-        int jiyuu = seiseki[4];
+    /**
+     * 卒業要件
+     */
+    protected static final int[] SOTSUGYO_YOUKEN = new int[]{30, 24, 32, 16, 14, 8};
+
+    /**
+     * @param tanni 取得単位数の整数配列。
+     *              new int[6]{教養, 基礎, 第一メジャー, 第二メジャー, その他メジャー, 自由選択}
+     * @return 卒業要件に照らして余剰分を調整した単位数の整数配列
+     * - 第一メジャー、第二メジャーの余剰はその他メジャーに入る
+     * - 基礎、その他メジャー、教養の余剰は自由選択に入る
+     */
+    public static int[] calculate(int[] tanni) {
+        int kyouyou = tanni[0];
+        int daiichiMajor = tanni[1];
+        int dainiMajor = tanni[2];
+        int sonotaMajor = tanni[3];
+        int jiyuu = tanni[4];
         return new int[]{kyouyou, daiichiMajor, dainiMajor, sonotaMajor, jiyuu};
     }
 
