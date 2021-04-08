@@ -14,15 +14,19 @@ public class App {
      *              new int[6]{教養, 基礎, 第一メジャー, 第二メジャー, その他メジャー, 自由選択}
      * @return 卒業要件に照らして余剰分を調整した単位数の整数配列
      * - 第一メジャー、第二メジャーの余剰はその他メジャーに入る
-     * - 基礎、その他メジャー、教養の余剰は自由選択に入る
+     * - 教養、基礎、その他メジャーの余剰は自由選択に入る
      */
     public static int[] calculate(int[] tanni) {
         int kyouyou = tanni[0];
-        int daiichiMajor = tanni[1];
-        int dainiMajor = tanni[2];
-        int sonotaMajor = tanni[3];
-        int jiyuu = tanni[4];
-        return new int[]{kyouyou, daiichiMajor, dainiMajor, sonotaMajor, jiyuu};
+        int kiso = tanni[1];
+        int daiichiMajor = tanni[2];
+        int dainiMajor = tanni[3];
+        int sonotaMajor = tanni[4];
+        int jiyuu = tanni[5];
+        //
+        // このメソッド(関数)を編集してください
+        //
+        return new int[]{kyouyou, kiso, daiichiMajor, dainiMajor, sonotaMajor, jiyuu};
     }
 
     public static void main(String[] args) {
