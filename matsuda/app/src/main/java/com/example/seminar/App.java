@@ -7,7 +7,20 @@ public class App {
     /**
      * 卒業要件
      */
-    protected static final int[] SOTSUGYO_YOUKEN = new int[]{30, 24, 32, 16, 14, 8};
+    static final int youkenKyouyou = 30;
+    static final int youkenKiso = 24;
+    static final int youkenDaiichiMajor = 32;
+    static final int youkenDainiMajor = 16;
+    static final int youkenSonotaMajor = 14;
+    static final int youkenJiyuu = 8;
+    static final int[] youken = {
+            youkenKyouyou,
+            youkenKiso,
+            youkenDaiichiMajor,
+            youkenDainiMajor,
+            youkenSonotaMajor,
+            youkenJiyuu
+    };
 
     /**
      * @param tanni 取得単位数の整数配列。
@@ -23,17 +36,42 @@ public class App {
         int dainiMajor = tanni[3];
         int sonotaMajor = tanni[4];
         int jiyuu = tanni[5];
-        //
-        // このメソッド(関数)を編集してください
-        //
+        if (daiichiMajor >= youkenDaiichiMajor) {
+            sonotaMajor += daiichiMajor - youkenDaiichiMajor;
+            daiichiMajor = youkenDaiichiMajor;
+        }
+        if (dainiMajor >= youkenDainiMajor) {
+            sonotaMajor += dainiMajor - youkenDainiMajor;
+            dainiMajor = youkenDainiMajor;
+        }
+        if (kyouyou >= youkenKyouyou) {
+            jiyuu += kyouyou - youkenKyouyou;
+            kyouyou = youkenKyouyou;
+        }
+        if (kiso >= youkenKiso) {
+            jiyuu += kiso - youkenKiso;
+            kiso = youkenKiso;
+        }
+        if (sonotaMajor >= youkenSonotaMajor) {
+            jiyuu += sonotaMajor - youkenSonotaMajor;
+            sonotaMajor = youkenSonotaMajor;
+        }
         return new int[]{kyouyou, kiso, daiichiMajor, dainiMajor, sonotaMajor, jiyuu};
     }
 
     public static void main(String[] args) {
-        int[] seiseki = {30, 24, 32, 16, 14, 8};
-        seiseki = calculate(seiseki);
-        for (int i = 0; i < seiseki.length; i++) {
-            System.out.print(seiseki[i] + " ");
+        int[] seiseki = {32, 24, 32, 16, 14, 8};
+        System.out.print("計算前: ");
+        printArray(seiseki);
+        System.out.print("計算後: ");
+        printArray(calculate(seiseki));
+    }
+
+
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
+        System.out.print("\n");
     }
 }

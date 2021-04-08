@@ -31,7 +31,7 @@ public class AppTest {
         int[] calculated = App.calculate(data);
         boolean expected = true;
         for (int i = 0; i < calculated.length - 1; i++) {
-            boolean actual = calculated[i] <= App.SOTSUGYO_YOUKEN[i];
+            boolean actual = calculated[i] <= App.youken[i];
             assertEquals("計算後の自由選択以外の単位数が卒業要件以下", expected, actual);
         }
     }
