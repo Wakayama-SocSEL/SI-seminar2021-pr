@@ -28,3 +28,11 @@ application {
     // Define the main class for the application.
     mainClass = 'com.example.seminar.App'
 }
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
