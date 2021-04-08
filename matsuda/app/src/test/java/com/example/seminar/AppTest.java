@@ -22,25 +22,67 @@ public class AppTest {
         int[] calculated = App.calculate(data);
         int expected = sum(data);
         int actual = sum(calculated);
-        assertEquals("計算後の合計単位数が等しい", expected, actual);
+        assertEquals("計算後の合計単位数が計算前と等しい", expected, actual);
     }
 
     @Test
     public void testLimit() {
         int[] data = new int[]{32, 26, 34, 18, 16, 10};
         int[] calculated = App.calculate(data);
+        boolean expected = true;
         for (int i = 0; i < calculated.length - 1; i++) {
-            assertTrue("計算後の自由選択以外の単位数が卒業要件以下", calculated[i] <= App.SOTSUGYO_YOUKEN[i]);
+            boolean actual = calculated[i] <= App.SOTSUGYO_YOUKEN[i];
+            assertEquals("計算後の自由選択以外の単位数が卒業要件以下", expected, actual);
         }
     }
 
     @Test
-    public void testCalculate() {
-        int[] data = new int[]{30, 24, 34, 16, 12, 8};
-        // 第一メジャーが2単位多いので、その他メジャーに2単位回す
-        // 34 → 32, 12 → 14
-        int[] expected = new int[]{30, 24, 32, 16, 14, 8};
-        int[] actual = App.calculate(data);
-        assertArrayEquals("第一メジャーの余剰をその他メジャーに回す", expected, actual);
+    public void testDaiichiMajor() {
+        int[] data = new int[]{0, 0, 34, 0, 0, 0};
+        int[] expected = new int[]{0, 0, 32, 0, 2, 0};
+        int[] calculated = App.calculate(data);
+        for (int i = 0; i < expected.length - 1; i++) {
+            assertEquals("第一メジャーの余剰をその他メジャーに回す", expected[i], calculated[i]);
+        }
+    }
+
+    @Test
+    public void testDainiMajor() {
+        int[] data = new int[]{0, 0, 0, 18, 0, 0};
+        int[] expected = new int[]{0, 0, 0, 16, 2, 0};
+        int[] calculated = App.calculate(data);
+        for (int i = 0; i < expected.length - 1; i++) {
+            assertEquals("第二メジャーの余剰をその他メジャーに回す", expected[i], calculated[i]);
+        }
+    }
+
+    @Test
+    public void testSonotaMajor() {
+        int[] data = new int[]{0, 0, 0, 0, 16, 0};
+        int[] expected = new int[]{0, 0, 0, 0, 14, 2};
+        int[] calculated = App.calculate(data);
+        for (int i = 0; i < expected.length - 1; i++) {
+            assertEquals("その他メジャーの余剰を自由選択に回す", expected[i], calculated[i]);
+        }
+    }
+
+    @Test
+    public void testKyouyou() {
+        int[] data = new int[]{32, 0, 0, 0, 0, 0};
+        int[] expected = new int[]{30, 0, 0, 0, 0, 2};
+        int[] calculated = App.calculate(data);
+        for (int i = 0; i < expected.length - 1; i++) {
+            assertEquals("教養の余剰を自由選択に回す", expected[i], calculated[i]);
+        }
+    }
+
+    @Test
+    public void testKiso() {
+        int[] data = new int[]{0, 26, 0, 0, 0, 0};
+        int[] expected = new int[]{0, 24, 0, 0, 0, 2};
+        int[] calculated = App.calculate(data);
+        for (int i = 0; i < expected.length - 1; i++) {
+            assertEquals("基礎の余剰を自由選択に回す", expected[i], calculated[i]);
+        }
     }
 }
