@@ -24,7 +24,7 @@ public class App {
 
     /**
      * @param tanni 取得単位数の整数配列。
-     *              new int[6]{教養, 基礎, 第一メジャー, 第二メジャー, その他メジャー, 自由選択}
+     *              new int[]{教養, 基礎, 第一メジャー, 第二メジャー, その他メジャー, 自由選択}
      * @return 卒業要件に照らして余剰分を調整した単位数の整数配列
      * - 第一メジャー、第二メジャーの余剰はその他メジャーに入る
      * - 教養、基礎、その他メジャーの余剰は自由選択に入る
@@ -66,7 +66,6 @@ public class App {
         System.out.print("計算後: ");
         printArray(calculate(seiseki));
     }
-
 
     public static void printArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
