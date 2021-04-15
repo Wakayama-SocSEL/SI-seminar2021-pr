@@ -36,3 +36,10 @@ compileJava {
 compileTestJava {
     options.encoding = 'UTF-8'
 }
+
+test {
+    testLogging {
+        events 'started', 'skipped', 'passed', 'failed'
+        exceptionFormat 'full'
+    }
+}

@@ -28,3 +28,10 @@ application {
     // Define the main class for the application.
     mainClass = 'com.example.seminar.FizzBuzz'
 }
+
+test {
+    testLogging {
+        events 'started', 'skipped', 'passed', 'failed'
+        exceptionFormat 'full'
+    }
+}
