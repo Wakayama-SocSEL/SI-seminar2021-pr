@@ -13,7 +13,7 @@ public class AppTest {
     protected ByteArrayOutputStream out;
     protected static Answer answer;
 
-    protected void testExecute(int start, int end) throws IllegalArgumentException {
+    protected void assertExecute(int start, int end) throws IllegalArgumentException {
         if (start <= 0 || end <= 0) {
             throw new IllegalArgumentException("must be positive");
         } else if (start > end) {
@@ -51,56 +51,56 @@ public class AppTest {
 
     @Test
     public void testUpper1() {
-        testExecute(1, 1);
+        assertExecute(1, 1);
     }
 
     @Test
     public void testUpper10() {
-        testExecute(1, 10);
+        assertExecute(1, 10);
     }
 
     @Test
     public void testUpper40() {
-        testExecute(1, 40);
+        assertExecute(1, 40);
     }
 
     @Test
     public void testLower5() {
-        testExecute(5, 25);
+        assertExecute(5, 25);
     }
 
     @Test
     public void testLower10() {
-        testExecute(10, 25);
+        assertExecute(10, 25);
     }
 
     @Test
     public void testSlice5_10() {
-        testExecute(5, 10);
+        assertExecute(5, 10);
     }
 
     @Test
     public void testSlice7_30() {
-        testExecute(7, 30);
+        assertExecute(7, 30);
     }
 
     @Test
     public void testSlice35_50() {
-        testExecute(35, 50);
+        assertExecute(35, 50);
     }
 
     @Test
     public void testSlice5_5() {
-        testExecute(5, 5);
+        assertExecute(5, 5);
     }
 
     @Test
     public void testSlice15_15() {
-        testExecute(15, 15);
+        assertExecute(15, 15);
     }
 
     @Test
     public void testSlice30_30() {
-        testExecute(30, 30);
+        assertExecute(30, 30);
     }
 }
