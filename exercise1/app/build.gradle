@@ -29,6 +29,14 @@ application {
     mainClass = 'com.example.seminar.FizzBuzz'
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 test {
     testLogging {
         events 'started', 'skipped', 'passed', 'failed'
