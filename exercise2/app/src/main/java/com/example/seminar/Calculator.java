@@ -33,26 +33,10 @@ public class Calculator {
         int dainiMajor = tanni[3];
         int sonotaMajor = tanni[4];
         int jiyuu = tanni[5];
-        if (daiichiMajor >= youkenDaiichiMajor) {
-            sonotaMajor += daiichiMajor - youkenDaiichiMajor;
-            daiichiMajor = youkenDaiichiMajor;
-        }
-        if (dainiMajor >= youkenDainiMajor) {
-            sonotaMajor += dainiMajor - youkenDainiMajor;
-            dainiMajor = youkenDainiMajor;
-        }
-        if (kyouyou >= youkenKyouyou) {
-            jiyuu += kyouyou - youkenKyouyou;
-            kyouyou = youkenKyouyou;
-        }
-        if (kiso >= youkenKiso) {
-            jiyuu += kiso - youkenKiso;
-            kiso = youkenKiso;
-        }
-        if (sonotaMajor >= youkenSonotaMajor) {
-            jiyuu += sonotaMajor - youkenSonotaMajor;
-            sonotaMajor = youkenSonotaMajor;
-        }
+        //
+        // 演習 問題②
+        // このファイルを自由に編集して、なるべく多くのテストがPASSEDになるようにしてください
+        //
         return new int[]{kyouyou, kiso, daiichiMajor, dainiMajor, sonotaMajor, jiyuu};
     }
 }
